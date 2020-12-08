@@ -87,9 +87,8 @@ module InspecPlugins
 
       private
 
-      # for a feature, returns either:
+      # for a feature, returns:
       #  - a version v0:                      v supports v0       iff v0 <= v
-      #  - an array [v0, v1] of two versions: v supports [v0, v1] iff v0 <= v < v1
       def version_with_support(feature)
         case feature.to_sym
         when :oidc
