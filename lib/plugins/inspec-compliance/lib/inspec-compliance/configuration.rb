@@ -76,15 +76,6 @@ module InspecPlugins
         end
       end
 
-      # exit 1 if the version of compliance that we're working with doesn't support odic
-      def legacy_check!(feature)
-        return if supported?(feature)
-
-        puts "This feature (#{feature}) is not available for legacy installations."
-        puts "Please upgrade to a recent version of Chef Compliance."
-        exit 1
-      end
-
       private
 
       # for a feature, returns:
