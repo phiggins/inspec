@@ -61,19 +61,14 @@ module InspecPlugins
         end
       end
 
-      # return if the (stored) api version does not support a certain feature
+      # return if the (stored) api version supports a certain feature
       def supported?(feature)
         sup = version_with_support(feature)
 
         # we do not know the version, therefore we do not know if its possible to use the feature
         return if self["version"].nil? || self["version"]["version"].nil?
 
-        if sup.is_a?(Array)
-          Gem::Version.new(self["version"]["version"]) >= sup[0] &&
-            Gem::Version.new(self["version"]["version"]) < sup[1]
-        else
-          Gem::Version.new(self["version"]["version"]) >= sup
-        end
+        Gem::Version.new(self["version"]["version"]) >= sup
       end
 
       private
